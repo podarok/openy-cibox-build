@@ -57,7 +57,7 @@
 
     - block:
         - include_tasks: devops/reinstall/solr.yml
-        tags: [ 'solr-commands', 'after-install' ]
+      tags: [ 'solr-commands', 'after-install' ]
       become: yes
       when: use_solr
 
