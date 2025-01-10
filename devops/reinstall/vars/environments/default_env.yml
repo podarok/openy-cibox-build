@@ -20,8 +20,8 @@ env:
     - { name: 'config-set', status: false, arguments: "system.site uuid USER_YOUR_UUID_HERE -y" }
     - { name: 'config-set', status: false, arguments: "stage_file_proxy.settings origin {{ origin_site_url }} -y" }
     - { name: 'config-set', status: true, arguments: "geolocation.settings google_map_api_key 'AIzaSyCzztpo_nVXIGjZdnu3g-lCuQSTnKbfEtM' -y" }
-    - { name: 'config-set', status: true, arguments: "google_tag.settings container_id GTM-PQTSN2 -y" }
-    - { name: 'config-set', status: true, arguments: "google_tag.settings path_list '' -y" }
+    - { name: 'config-set', status: false, arguments: "google_tag.settings container_id GTM-PQTSN2 -y" }
+    - { name: 'config-set', status: false, arguments: "google_tag.settings path_list '' -y" }
     - { name: 'config-set', status: true, arguments: "search_api.server.solr backend_config.connector_config.host 127.0.0.1 -y" }
     - { name: 'config-set', status: true, arguments: "search_api.server.solr backend_config.connector_config.core {{ mysql_db }} -y" }
     - { name: 'config-set', status: true, arguments: "search_api.server.solr backend_config.connector_config.workarounds.solr_version 4.5 -y" }
