@@ -53,6 +53,11 @@
   when: rebuild_registry
 
 - name: Clear Drupal cache
+  gnore_errors: yes
+  become: yes
+  shell: "{{ php_env_vars }} drush cr -l {{ site_url }}"
+
+- name: Clear Drupal cache
   become: yes
   shell: "{{ php_env_vars }} drush cr -l {{ site_url }}"
 
