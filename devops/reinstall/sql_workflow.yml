@@ -53,7 +53,7 @@
   when: rebuild_registry
 
 - name: Clear Drupal cache
-  gnore_errors: yes
+  ignore_errors: yes
   become: yes
   shell: "{{ php_env_vars }} drush cr -l {{ site_url }}"
 
@@ -66,11 +66,6 @@
   become: yes
   shell: "{{ php_env_vars }} drush -y updb -l {{ site_url }}"
   register: updates
-
-- name: Apply pending entity schema updates
-  become: yes
-  shell: "{{ php_env_vars }} drush -y entup -l {{ site_url }}"
-  ignore_errors: true
 
 - name: Download stage file proxy
   ignore_errors: yes
