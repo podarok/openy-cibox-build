@@ -52,20 +52,15 @@
   shell: "{{ php_env_vars }} drush -y rr -l {{ site_url }} || true"
   when: rebuild_registry
 
-- name: Clear Drupal cache
-  ignore_errors: yes
-  become: yes
-  shell: "{{ php_env_vars }} drush cr -l {{ site_url }}"
-
-- name: Clear Drupal cache
-  become: yes
-  shell: "{{ php_env_vars }} drush cr -l {{ site_url }}"
-
 # Update database. See https://www.youtube.com/watch?v=vFsgNjhGr4Y how-to update configs with http://dgo.to/confi
 - name: Updating database
   become: yes
-  shell: "{{ php_env_vars }} drush -y updb -l {{ site_url }}"
+  shell: "{{ php_env_vars }} drush -y updb --no-cache-clear -l {{ site_url }}"
   register: updates
+
+- name: Clear Drupal cache
+  become: yes
+  shell: "{{ php_env_vars }} drush cr -l {{ site_url }}"
 
 - name: Download stage file proxy
   ignore_errors: yes
